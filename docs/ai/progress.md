@@ -10,8 +10,8 @@ unverified at initial creation. Saved games are absent.
 After a user-reported pygame 2.6.1 source-build failure (missing SDL.h on
 Python 3.14), requirements now select pygame-ce >=2.5.7. PyPI confirms a
 CPython 3.14 macOS universal2 wheel for 2.5.7. Installation remains unverified
-in the restricted agent environment. Existing user-created pyproject.toml and
-uv.lock are unchanged; requirements.txt remains the documented setup source.
+in the restricted agent environment. At that stage, user-created pyproject.toml
+and uv.lock were unchanged and requirements.txt was the documented setup source.
 
 Added Bot/Duo setup, three difficulty levels, color selection, black orientation,
 background bot search, stale-result protection and paired undo in bot mode.
@@ -19,4 +19,12 @@ Dependencies are now installed in .venv (pygame-ce 2.5.8 and chess 1.11.2).
 Four unittest checks passed: legal bot moves with unchanged search input,
 mate-in-one and terminal positions, all-square coordinate round trips for both
 orientations, and a dummy-display menu/Duo/undo/menu event-loop smoke check.
+Native graphical appearance and interactive bot play remain unverified.
+
+2026-10-16: Migrated setup and README to uv; pyproject.toml declares runtime
+dependencies and uv.lock pins their versions. Renamed project metadata to
+pygame-chess-game to avoid a dependency name collision. No requirements.txt
+exists in the repository; the documented setup no longer uses pip.
+Validation: uv lock and uv sync --locked succeeded on Python 3.14.6;
+uv run --locked python -m unittest discover -s tests -v passed all four tests.
 Native graphical appearance and interactive bot play remain unverified.

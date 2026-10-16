@@ -1,24 +1,42 @@
 # Python shaxmat
 
 Pygame orqali bot bilan yoki bitta kompyuterda ikki kishi o'ynaydigan shaxmat.
-Python 3.10 yoki yangiroq versiya kerak.
+Python 3.14 yoki yangiroq versiya kerak. Muhit va bog'liqliklar `uv` orqali boshqariladi.
 
 Grafika uchun `pygame-ce` ishlatiladi; kodda u `import pygame` orqali yuklanadi.
 Bu paket Python 3.14 uchun ham tayyor macOS paketlarini taqdim etadi.
 
 ## Ishga tushirish
 
+Avval [uv](https://docs.astral.sh/uv/getting-started/installation/) o'rnating.
+So'ng loyiha papkasida quyidagi buyruqlarni bajaring (macOS, Linux va Windows):
+
 ```sh
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
-python main.py
+uv sync --locked
+uv run main.py
 ```
 
-Windows'da muhitni faollashtirish: `.venv\Scripts\activate`.
+`uv` kerakli Python versiyasini va `.venv` muhitini avtomatik tayyorlaydi.
+Muhitni qo'lda faollashtirish shart emas. Bog'liqliklar `pyproject.toml`da,
+ularning aniq versiyalari esa Git'ga kiritilgan `uv.lock` faylida saqlanadi.
 
-Oldin oddiy `pygame` o'rnatilgan bo'lsa, `pygame-ce` bilan to'qnashmasligi uchun
-avval `python -m pip uninstall pygame` buyrug'ini bajaring.
+## Ishlab chiqish
+
+```sh
+uv run --locked python -m unittest discover -s tests -v
+```
+
+Testlar grafik oynasiz ishlaydi. Yangi bog'liqlik qo'shish uchun `uv add paket-nomi`,
+olib tashlash uchun `uv remove paket-nomi` ishlating. Bog'liqliklarni yangilash:
+
+```sh
+uv lock --upgrade
+uv sync --locked
+```
+
+O'zgargan `pyproject.toml` va `uv.lock` fayllarini birga commit qiling.
+
+## O'yin boshqaruvi
 
 Donani va keyin boradigan katakni bosing. Mumkin bo'lgan yurishlar yashil
 belgilanadi. Piyoda oxirgi qatorga yetganda yangi donani tanlang.

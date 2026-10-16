@@ -1,4 +1,4 @@
-"""Bot va Duo rejimli Pygame shaxmat. Ishga tushirish: python main.py."""
+"""Bot va Duo rejimli Pygame shaxmat. Ishga tushirish: uv run main.py."""
 
 import chess
 import pygame

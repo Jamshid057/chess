@@ -1,5 +1,10 @@
 # Decisions
 
+- 2026-10-16: Use uv with pyproject.toml and a committed uv.lock as the
+  dependency workflow, replacing the earlier requirements-based setup.
+  Keep Python >=3.14 and .python-version at 3.14. Name the application
+  pygame-chess-game to avoid shadowing the chess dependency of python-chess.
+
 - 2026-10-14: Add a self-contained bot rather than requiring an external engine.
   Easy uses random moves; medium/hard use bounded searches. Search runs in one
   worker on copied state so rendering continues. Generation checks reject stale
